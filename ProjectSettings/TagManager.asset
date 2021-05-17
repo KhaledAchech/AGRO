@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Rocket
   - BossPath
+  - Portal
   layers:
   - Default
   - TransparentFX
