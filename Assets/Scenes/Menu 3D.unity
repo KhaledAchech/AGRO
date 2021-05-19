@@ -567,6 +567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 608465153}
   transitionTime: 1
+  loadingSystem: {fileID: 2075607450}
 --- !u!224 &1889322789 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 400922191412433449, guid: 4cf9120b59afc3049b8b749099a22aba,
@@ -624,6 +625,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7461a7b0cf97947fd9b9e4502fd2d07b, type: 3}
+--- !u!114 &2075607450 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 832154303438987949, guid: 1a3eb312e3da29947a271d3390146c2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7672989312382334900}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d09316216274ac94bbbbdc495123c59f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &186605503354866118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -841,9 +854,45 @@ PrefabInstance:
       objectReference: {fileID: 1111030989}
     - target: {fileID: 3839151072044108042, guid: 6b06a749cc340074a8ac28b1a1c7245f,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839151072044108042, guid: 6b06a749cc340074a8ac28b1a1c7245f,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1235861155}
+    - target: {fileID: 3839151072044108042, guid: 6b06a749cc340074a8ac28b1a1c7245f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839151072044108042, guid: 6b06a749cc340074a8ac28b1a1c7245f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839151072044108042, guid: 6b06a749cc340074a8ac28b1a1c7245f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 11500000, guid: d09316216274ac94bbbbdc495123c59f,
+        type: 3}
+    - target: {fileID: 3839151072044108042, guid: 6b06a749cc340074a8ac28b1a1c7245f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839151072044108042, guid: 6b06a749cc340074a8ac28b1a1c7245f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839151072044108042, guid: 6b06a749cc340074a8ac28b1a1c7245f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
+      value: AncientForestLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 3839151072044108044, guid: 6b06a749cc340074a8ac28b1a1c7245f,
         type: 3}
       propertyPath: m_Color.r
@@ -1056,11 +1105,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameLoader
       objectReference: {fileID: 0}
-    - target: {fileID: 7672989312596639560, guid: 1a3eb312e3da29947a271d3390146c2f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7672989312596639561, guid: 1a3eb312e3da29947a271d3390146c2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1116,8 +1160,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7672989312596639562, guid: 1a3eb312e3da29947a271d3390146c2f, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a3eb312e3da29947a271d3390146c2f, type: 3}
 --- !u!1001 &8436156959055601306
 PrefabInstance:

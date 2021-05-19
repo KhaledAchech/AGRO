@@ -9,22 +9,40 @@ public class MainMenu : MonoBehaviour
   public Animator transition;
   public float transitionTime = 1f;
 
+  public LoadingScreenBarSystem loadingSystem;
+
+
   public void PlayGame()
   {
-    StartCoroutine(PlayTransition());
-    SceneManager.LoadScene("Prototype"); 
+    //StartCoroutine(PlayTransition());
+    loadData();
+  }
+
+  public void loadData()
+  {
+    PlayerData data = SaveSystem.LoadPlayer();
+    if (data != null)
+    {
+      loadingSystem.loadingScreen(2);
+      //SceneManager.LoadScene("AncientForestLevel"); 
+    }
+    else
+    {
+      loadingSystem.loadingScreen(3);
+      //SceneManager.LoadScene("Prototype");
+    }
   }
 
    public void NewGame()
   {
-    SceneManager.LoadScene("Layout Groups"); 
+    SceneManager.LoadScene("NewGame"); 
   }
 
   public void QuitGame()
   {
     Application.Quit();
   }
-
+/*
   IEnumerator PlayTransition()
   {
     transition.SetTrigger("Start");
@@ -32,4 +50,5 @@ public class MainMenu : MonoBehaviour
     yield return new WaitForSeconds(transitionTime);
 
   }
+*/
 }
