@@ -1,12 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class Player : MonoBehaviour
 {
     public string name ;
     public int level;
     public int score; 
+
+    public GameObject name_text;
+
+
 
     public Player(string name, int level, int score)
     {
@@ -30,6 +37,7 @@ public class Player : MonoBehaviour
 
         //update ui
         ScoringSystem.Score = score;
+        name_text.GetComponent<Text>().text = name;
         
     }
 
@@ -38,4 +46,6 @@ public class Player : MonoBehaviour
     {
         
     }
+
+      
 }
