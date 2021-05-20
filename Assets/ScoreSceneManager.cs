@@ -33,7 +33,7 @@ public class ScoreSceneManager : MonoBehaviour
 
    public void ScoreBoard()
    {
-
+       SceneManager.LoadScene("ScoreBoard"); 
    }
 
    public void LevelSelection()
