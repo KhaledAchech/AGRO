@@ -11,6 +11,9 @@ TagManager:
   - BossPath
   - Portal
   - name
+  - ExplosiveBarrel
+  - FxTemporaire
+  - Laser
   layers:
   - Default
   - TransparentFX

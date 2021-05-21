@@ -21,9 +21,11 @@ public class HighscoreTable : MonoBehaviour {
 
         PlayerData data = SaveSystem.LoadPlayer();
         string name = data.name.Substring(0,3).ToUpper();
-        
-        if (highscores == null) {
+        Debug.Log(data.score);
+        //AddHighscoreEntry(data.score, name);
+        if (highscores != null) {
             // There's no stored table, initialize
+            PlayerPrefs.DeleteAll();
             Debug.Log("Initializing table with default values...");
             AddHighscoreEntry(1000, "CMK");
             AddHighscoreEntry(897, "JOE");
@@ -32,6 +34,7 @@ public class HighscoreTable : MonoBehaviour {
             AddHighscoreEntry(542, "MAX");
             AddHighscoreEntry(682, "AAA");
             AddHighscoreEntry(data.score, name);
+            
             // Reload
             jsonString = PlayerPrefs.GetString("highscoreTable");
             highscores = JsonUtility.FromJson<Highscores>(jsonString);

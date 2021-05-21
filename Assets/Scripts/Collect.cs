@@ -12,7 +12,7 @@ public class Collect : MonoBehaviour
         GameObject sound = (GameObject)Instantiate( 
                 collectSound, transform.position, transform.rotation);
        Debug.Log("score !");
-       ScoringSystem.Score += 10;
+       ScoringSystem.Score += 30;
        Destroy(gameObject);
    }
 }

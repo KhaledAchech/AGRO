@@ -23961,7 +23961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2144237994678773106
 Transform:
   m_ObjectHideFlags: 0
@@ -33462,7 +33462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4346457330195515199
 Transform:
   m_ObjectHideFlags: 0
@@ -57383,7 +57383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6762353854367109406
 Transform:
   m_ObjectHideFlags: 0
@@ -62124,7 +62124,7 @@ Transform:
   m_GameObject: {fileID: 7088135956211750144}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.27716, y: 0.27716, z: 0.27716}
   m_Children: []
   m_Father: {fileID: 3049428253405200658}
   m_RootOrder: 0
@@ -66891,7 +66891,7 @@ ParticleSystemRenderer:
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: -8530696230116526761, guid: 9d622ecb8356a194a9a78cd6f3beec4f, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 4d895d66f29e6554da6c20e51dab05b1, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -66913,7 +66913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9213118880250276864
 Transform:
   m_ObjectHideFlags: 0
