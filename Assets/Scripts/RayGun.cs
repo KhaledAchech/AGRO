@@ -61,7 +61,7 @@ public class RayGun : MonoBehaviour
                 CinemachineShake.Instance.ShakeCamera(0.5f,0.1f);
                 LaserImpactonWall.Play();
             }
-            /*
+            
             if (hit.transform.tag == "ExplosiveBarrel")
             {
             LaserImpact.Play();
@@ -69,7 +69,7 @@ public class RayGun : MonoBehaviour
             ExplosiveBarrel explosiveBarrel = hit.transform.GetComponent<ExplosiveBarrel>();
             explosiveBarrel.Explode();
             }
-            */
+            
 
 
         }

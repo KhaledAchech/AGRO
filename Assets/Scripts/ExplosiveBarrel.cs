@@ -37,7 +37,7 @@ public class ExplosiveBarrel : MonoBehaviour
 
         this.enabled = false;
     }
-
+    /*
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("i hit a barrel");
@@ -47,6 +47,7 @@ public class ExplosiveBarrel : MonoBehaviour
             Explode();
         }
     }
+    */
     private void Update()
     {
         /*
