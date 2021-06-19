@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 7962612413486584323}
   m_Layer: 0
   m_Name: Turret 1a
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -680,6 +680,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WFXMR_ExplosiveSmoke Big
       objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 1ae4db7b36e51124b89d2b32303a7a0b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 1ae4db7b36e51124b89d2b32303a7a0b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -722,6 +726,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 1ae4db7b36e51124b89d2b32303a7a0b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 1ae4db7b36e51124b89d2b32303a7a0b, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 1ae4db7b36e51124b89d2b32303a7a0b, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800004, guid: 1ae4db7b36e51124b89d2b32303a7a0b, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800006, guid: 1ae4db7b36e51124b89d2b32303a7a0b, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800008, guid: 1ae4db7b36e51124b89d2b32303a7a0b, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800012, guid: 1ae4db7b36e51124b89d2b32303a7a0b, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
