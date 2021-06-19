@@ -24,14 +24,19 @@ public class ExplosiveBarrel : MonoBehaviour
 
         source.Play();
 
-        Collider[] enemies = Physics.OverlapSphere(transform.position, range);
+        Collider[] objects = Physics.OverlapSphere(transform.position, range);
 
-        foreach (Collider enemy in enemies)
+        foreach (Collider obj in objects)
         {
-            if (enemy.GetComponent<Enemy>() != null)
+            if (obj.GetComponent<Enemy>() != null)
             {
                 Debug.Log("we have enemies !");
-                enemy.GetComponent<Enemy>().KillEnemy(transform.position);
+                obj.GetComponent<Enemy>().KillEnemy(transform.position);
+            }
+            if (obj.GetComponent<ExplosiveBarrel>() != null)
+            {
+                Debug.Log("we have Barrels !");
+                obj.GetComponent<ExplosiveBarrel>().Explode();
             }
         }
 
@@ -54,7 +59,8 @@ public class ExplosiveBarrel : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Explode();
-        }*/
+        }
+        */
     }
 
     private void OnDrawGizmos()
