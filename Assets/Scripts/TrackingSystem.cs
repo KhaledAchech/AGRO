@@ -5,24 +5,24 @@ using UnityEngine;
 public class TrackingSystem : MonoBehaviour
 {
     public float speed = 3.0f;
-    public GameObject mybase = null;
-    public GameObject m_target = null;
+    public GameObject mybase;
+    public GameObject mytarget ;
     Vector3 m_lastKnownPosition = Vector3.zero;
     Quaternion m_lookAtRotation;
 
     // Update is called once per frame
     void Update()
     {
-        if (m_lastKnownPosition != m_target.transform.position)
+        if (m_lastKnownPosition != mytarget.transform.position)
         {
-            m_lastKnownPosition = m_target.transform.position;
+            m_lastKnownPosition = mytarget.transform.position;
             m_lookAtRotation = Quaternion.LookRotation(m_lastKnownPosition - transform.position); 
         }
 
         if (mybase.transform.rotation != m_lookAtRotation)
         {
              Quaternion tiltAroundYandZ = Quaternion.Euler(0, m_lookAtRotation.y, m_lookAtRotation.z);
-            mybase.transform.rotation = Quaternion.RotateTowards(mybase.transform.rotation, tiltAroundYandZ, speed * Time.deltaTime);
+            mybase.transform.rotation = Quaternion.RotateTowards(mybase.transform.rotation, m_lookAtRotation, speed * Time.deltaTime);
         }
         
     }
@@ -34,7 +34,7 @@ public class TrackingSystem : MonoBehaviour
             return false;
         }
 
-        m_target = target;
+        mytarget = target;
 
         return true;
     }
