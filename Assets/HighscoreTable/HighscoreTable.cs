@@ -23,7 +23,8 @@ public class HighscoreTable : MonoBehaviour {
         string name = data.name.Substring(0,3).ToUpper();
         Debug.Log(data.score);
         //AddHighscoreEntry(data.score, name);
-        if (highscores != null) {
+        //to be fixed ...
+        if (highscores != null || highscores == null ) {
             // There's no stored table, initialize
             PlayerPrefs.DeleteAll();
             Debug.Log("Initializing table with default values...");

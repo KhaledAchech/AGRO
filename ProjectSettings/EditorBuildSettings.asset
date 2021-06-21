@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ScoreBoard.unity
     guid: ebe50575ce6733a4e95f17bb7da740e4
+  - enabled: 0
+    path: Assets/Scenes/TestsScene.unity
+    guid: c1502c7c8a857f044834af59f1247fb9
   m_configObjects: {}
