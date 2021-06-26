@@ -23,4 +23,9 @@ public class TrackingProjectile : BaseProjectile
             m_target = target;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+    }
 }
