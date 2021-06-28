@@ -28,16 +28,24 @@ public class ExplosiveBarrel : MonoBehaviour
 
         foreach (Collider obj in objects)
         {
-            if (obj.GetComponent<Enemy>() != null)
+            float dist = Vector3.Distance(transform.position, obj.transform.position);
+            if(dist <= range)
             {
-                Debug.Log("we have enemies !");
-                obj.GetComponent<Enemy>().KillEnemy(transform.position);
-            }
+                if (obj.GetComponent<Enemy>() != null)
+                {   
+                
+                    Debug.Log("we have enemies !");
+                    obj.GetComponent<Enemy>().KillEnemy(transform.position);
+
+                }
             if (obj.GetComponent<ExplosiveBarrel>() != null)
-            {
-                Debug.Log("we have Barrels !");
-                obj.GetComponent<ExplosiveBarrel>().Explode();
+                {   
+                    Debug.Log("we have Barrels !");
+                    obj.GetComponent<ExplosiveBarrel>().Explode();
+                
+                }
             }
+            
         }
 
         this.enabled = false;

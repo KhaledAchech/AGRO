@@ -9,27 +9,30 @@ public class ShootingSystem : MonoBehaviour
     public int damage;
     public bool beam;
     public GameObject projectile;
-    public GameObject target;
     public List<GameObject> projectileSpawns;
 
     List<GameObject> m_lastProjectiles = new List<GameObject>();
     float m_fireTimer = 0.0f;
+    GameObject mytarget = null;
 
     // Update is called once per frame
     void Update()
     {
         if (beam && m_lastProjectiles.Count <= 0)
         {
-            float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(target.transform.position - transform.position));
-
-            if (angle > fieldOfView)
+            if (mytarget)
             {
-                SpawnProjectiles();
+                float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(mytarget.transform.position - transform.position));
+
+                if (angle <= fieldOfView)
+                {
+                    SpawnProjectiles();
+                }
             }
         }
         else if (beam && m_lastProjectiles.Count > 0)
         {
-            float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(target.transform.position - transform.position));
+            float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(mytarget.transform.position - transform.position));
 
             if (angle > fieldOfView)
             {
@@ -44,14 +47,15 @@ public class ShootingSystem : MonoBehaviour
             m_fireTimer += Time.deltaTime;
             if (m_fireTimer >= fireRate)
             {
-                float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(target.transform.position - transform.position));
-
-            if (angle > fieldOfView)
-            {
-                SpawnProjectiles();
-                m_fireTimer = 0.0f;
-            }
-
+                if (mytarget)
+                {
+                float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(mytarget.transform.position - transform.position));
+                    if (angle <= fieldOfView)
+                    {
+                        SpawnProjectiles();
+                        m_fireTimer = 0.0f;
+                    }
+                }
             }
         }
     }
@@ -69,10 +73,15 @@ public class ShootingSystem : MonoBehaviour
             if (projectileSpawns[i])
             {
                 GameObject proj = Instantiate(projectile, projectileSpawns[i].transform.position, Quaternion.Euler(projectileSpawns[i].transform.forward)) as GameObject;
-                proj.GetComponent<BaseProjectile>().FireProjectile(projectileSpawns[i],target,damage);
+                proj.GetComponent<BaseProjectile>().FireProjectile(projectileSpawns[i],mytarget,damage);
 
                 m_lastProjectiles.Add(proj);
             }
         }
+    }
+
+    public void SetTarget(GameObject target)
+    {
+        mytarget = target;
     }
 }

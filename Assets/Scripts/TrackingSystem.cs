@@ -6,7 +6,7 @@ public class TrackingSystem : MonoBehaviour
 {
     public float speed = 3.0f;
     public GameObject mybase;
-    public GameObject mytarget = null;
+    GameObject mytarget = null;
     Vector3 m_lastKnownPosition = Vector3.zero;
     Quaternion m_lookAtRotation;
 
@@ -31,15 +31,8 @@ public class TrackingSystem : MonoBehaviour
         
     }
 
-    bool SetTarget(GameObject target)
+    public void SetTarget(GameObject target)
     {
-        if (target)
-        {
-            return false;
-        }
-
         mytarget = target;
-
-        return true;
     }
 }

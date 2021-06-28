@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 200
-  beamLength: 100
+  beamLength: 220
 --- !u!120 &6022635106593918241
 LineRenderer:
   m_ObjectHideFlags: 0
