@@ -62,7 +62,7 @@ public class RangeChecker : MonoBehaviour
             float dist = Vector3.Distance(transform.position, obj.transform.position);
             if (tags.Contains(obj.tag))
             {
-                if (dist <= range)
+                if (dist < range)
                 {
                     invalid = false;
                     m_targets.Add(obj.gameObject);

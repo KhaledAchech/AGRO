@@ -24,7 +24,7 @@ public class ShootingSystem : MonoBehaviour
             {
                 float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(mytarget.transform.position - transform.position));
 
-                if (angle <= fieldOfView)
+                if (angle < fieldOfView)
                 {
                     SpawnProjectiles();
                 }

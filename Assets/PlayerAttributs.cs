@@ -42,6 +42,13 @@ public class PlayerAttributs : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Laser")) {
+            Debug.Log("laser beam");
+        }
+    }
+
     void PlayerDead()
     {
         explode();
