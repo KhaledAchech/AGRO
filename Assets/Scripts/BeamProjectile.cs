@@ -8,18 +8,26 @@ public class BeamProjectile : BaseProjectile
     GameObject m_launcher;
     Vector3 m_direction;
     bool m_fired;
-    // Update is called once per frame
-    
+
+    public GameObject playerObj;
+
+
+    void Start()
+    {
+        if (playerObj == null)
+            playerObj = GameObject.FindGameObjectWithTag("Player");
+    }
     void Update()
     {
+
         if (m_launcher)
         {
             GetComponent<LineRenderer>().SetPosition(0, transform.position);
             GetComponent<LineRenderer>().SetPosition(1, transform.position + (m_launcher.transform.forward * beamLength));
             RaycastHit hit;
-            if (Physics.Linecast(transform.position, transform.forward,out hit))
+            if (Physics.Linecast(transform.position, transform.forward, out hit))
             {
-                if (hit.collider.gameObject.tag == "Player")
+                if (hit.transform.tag == "Player")
                 {
                     GetComponent<LineRenderer>().SetPosition(1, hit.point);
                     Debug.Log("Did Hit" + hit.collider.gameObject.tag);
@@ -29,9 +37,9 @@ public class BeamProjectile : BaseProjectile
             {
                 GetComponent<LineRenderer>().SetPosition(1, transform.position + (m_launcher.transform.forward * beamLength));
             }
-            
+
         }
-        
+
 
     }
     public override void FireProjectile(GameObject launcher, GameObject target, int damage)
