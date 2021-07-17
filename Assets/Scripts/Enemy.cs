@@ -2,9 +2,9 @@
 
 public class Enemy : MonoBehaviour
 {
-public GameObject turret, Explosion;
+    public GameObject turret, Explosion;
 
-private AudioSource source;
+    private AudioSource source;
     private void Awake()
     {
         turret.SetActive(true);
@@ -16,12 +16,12 @@ private AudioSource source;
 
     }
 
-   
+
     public void KillEnemy(Vector3 ExplosionPosition)
     {
         turret.SetActive(false);
         Explosion.SetActive(true);
-
+        ScoringSystem.Score += 100;
         source.Play();
     }
 }

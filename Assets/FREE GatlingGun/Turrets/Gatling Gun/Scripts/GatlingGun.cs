@@ -25,7 +25,7 @@ public class GatlingGun : MonoBehaviour
     // Used to start and stop the turret firing
     bool canFire = false;
 
-    
+
     void Start()
     {
         // Set the firing range distance
@@ -74,7 +74,7 @@ public class GatlingGun : MonoBehaviour
             // start rotation
             currentRotationSpeed = barrelRotationSpeed;
 
-            // aim at enemy
+            // aim at player
             Vector3 baseTargetPostition = new Vector3(go_target.position.x, this.transform.position.y, go_target.position.z);
             Vector3 gunBodyTargetPostition = new Vector3(go_target.position.x, go_target.position.y, go_target.position.z);
 

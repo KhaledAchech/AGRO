@@ -24,7 +24,7 @@ public class ShootingSystem : MonoBehaviour
             {
                 float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(mytarget.transform.position - transform.position));
 
-                if (angle < fieldOfView)
+                if (angle <= fieldOfView)
                 {
                     SpawnProjectiles();
                 }
@@ -36,20 +36,21 @@ public class ShootingSystem : MonoBehaviour
 
             if (angle > fieldOfView)
             {
-                while(m_lastProjectiles.Count > 0)
+                while (m_lastProjectiles.Count > 0)
                 {
                     Destroy(m_lastProjectiles[0]);
                     m_lastProjectiles.RemoveAt(0);
                 }
             }
-        }else
+        }
+        else
         {
             m_fireTimer += Time.deltaTime;
             if (m_fireTimer >= fireRate)
             {
                 if (mytarget)
                 {
-                float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(mytarget.transform.position - transform.position));
+                    float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(mytarget.transform.position - transform.position));
                     if (angle <= fieldOfView)
                     {
                         SpawnProjectiles();
@@ -62,7 +63,7 @@ public class ShootingSystem : MonoBehaviour
 
     void SpawnProjectiles()
     {
-        if(!projectile)
+        if (!projectile)
         {
             return;
         }
@@ -73,7 +74,7 @@ public class ShootingSystem : MonoBehaviour
             if (projectileSpawns[i])
             {
                 GameObject proj = Instantiate(projectile, projectileSpawns[i].transform.position, Quaternion.Euler(projectileSpawns[i].transform.forward)) as GameObject;
-                proj.GetComponent<BaseProjectile>().FireProjectile(projectileSpawns[i],mytarget,damage);
+                proj.GetComponent<BaseProjectile>().FireProjectile(projectileSpawns[i], mytarget, damage);
 
                 m_lastProjectiles.Add(proj);
             }

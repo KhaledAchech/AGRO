@@ -1,0 +1,48 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LaserBeamImpact : MonoBehaviour
+{
+
+    public GameObject collisionExplosion;
+    public float speed = 50f;
+    public float damage = 1f;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        transform.position += transform.forward * Time.deltaTime * speed;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            explode();
+        }
+    }
+
+
+
+    public void explode()
+    {
+        if (collisionExplosion != null)
+        {
+            GameObject explosion = (GameObject)Instantiate(
+                collisionExplosion, transform.position, transform.rotation);
+            PlayerAttributs playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttributs>();
+            //Debug.Log("am here");
+            playerHealth.DeductHealth(damage);
+            Destroy(gameObject);
+            Destroy(explosion, 1f);
+        }
+
+
+    }
+}

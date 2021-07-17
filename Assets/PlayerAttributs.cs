@@ -10,12 +10,12 @@ public class PlayerAttributs : MonoBehaviour
 
     public UIBarScript PlayerHpBar;
     public HealthBar HpBar;
-    
-    
+
+
     float playerHealth;
 
     public GameObject DeathExplosion;
-    
+
 
     void Start()
     {
@@ -25,37 +25,30 @@ public class PlayerAttributs : MonoBehaviour
 
     public void DeductHealth(float deductHealth)
     {
-        
+
         playerHealth = playerHealth - deductHealth;
 
         int HP = (int)playerHealth;
-		int MaxHP = (int)playerMaxHealth;
-        
-        PlayerHpBar.UpdateValue(HP,MaxHP);
+        int MaxHP = (int)playerMaxHealth;
+
+        PlayerHpBar.UpdateValue(HP, MaxHP);
         HpBar.setHealth(HP);
         //Debug.Log(playerHealth);
-        if (playerHealth == 0) 
-        { 
+        if (playerHealth == 0)
+        {
             PlayerDead();
-            GameObject death = (GameObject)Instantiate( 
+            GameObject death = (GameObject)Instantiate(
                 DeathExplosion, transform.position, transform.rotation);
         }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Laser")) {
-            Debug.Log("laser beam");
-        }
-    }
-
     void PlayerDead()
     {
         explode();
     }
     void explode()
     {
-        if (collisionExplosion  != null) {
+        if (collisionExplosion != null)
+        {
             GameObject explosion = (GameObject)Instantiate(
                 collisionExplosion, transform.position, transform.rotation);
             ScoringSystem.Score = 0;

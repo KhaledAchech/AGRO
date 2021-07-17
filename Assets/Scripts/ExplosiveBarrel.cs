@@ -4,7 +4,7 @@ public class ExplosiveBarrel : MonoBehaviour
 {
     public GameObject Barrel, Explosion;
 
-    private AudioSource source;
+    public AudioSource source;
 
     [SerializeField]
     private float range;
@@ -19,33 +19,33 @@ public class ExplosiveBarrel : MonoBehaviour
 
     public void Explode()
     {
-        Barrel.SetActive(false);
-        Explosion.SetActive(true);
 
         source.Play();
+        Barrel.SetActive(false);
+        Explosion.SetActive(true);
 
         Collider[] objects = Physics.OverlapSphere(transform.position, range);
 
         foreach (Collider obj in objects)
         {
             float dist = Vector3.Distance(transform.position, obj.transform.position);
-            if(dist <= range)
+            if (dist <= range)
             {
                 if (obj.GetComponent<Enemy>() != null)
-                {   
-                
+                {
+
                     Debug.Log("we have enemies !");
                     obj.GetComponent<Enemy>().KillEnemy(transform.position);
 
                 }
-            if (obj.GetComponent<ExplosiveBarrel>() != null)
-                {   
+                if (obj.GetComponent<ExplosiveBarrel>() != null)
+                {
                     Debug.Log("we have Barrels !");
                     obj.GetComponent<ExplosiveBarrel>().Explode();
-                
+
                 }
             }
-            
+
         }
 
         this.enabled = false;
