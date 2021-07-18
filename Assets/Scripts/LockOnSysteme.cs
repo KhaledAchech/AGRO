@@ -15,7 +15,7 @@ public class LockOnSysteme : MonoBehaviour
     public GameObject SpawnEffect;
     //public Transform SpawnPosition;
     public float timeToWait;
-    
+
     public Transform target;
 
     public static List<GameObject> enemiesInGame = new List<GameObject>();
@@ -25,7 +25,7 @@ public class LockOnSysteme : MonoBehaviour
 
     public AudioSource RocketLauncherOn;
     public AudioSource RocketLauncherOff;
-    public AudioSource[] sounds; 
+    public AudioSource[] sounds;
     //private int savei = i;
 
     public PlayerMovement playerScript;
@@ -44,9 +44,9 @@ public class LockOnSysteme : MonoBehaviour
 
     IEnumerator ExecuteAfterTime(float timeToWait)
     {
-        
+
         yield return new WaitForSeconds(timeToWait);
-     // Code to execute after the delay
+        // Code to execute after the delay
         gunMuzzles.SetActive(false);
         RocketLauncher.SetActive(true);
         //playerScript.Break(true);
@@ -54,41 +54,42 @@ public class LockOnSysteme : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        try{
-        if (enemiesInGame.Count > 0)
+        try
         {
-           
-            for (int i = 0; i < enemiesInGame.Count; i++)
+            if (enemiesInGame.Count > 0)
             {
-                Vector3 enemyPos = Camera.main.WorldToViewportPoint(enemiesInGame[i].transform.position);
 
-                bool isOnScreen = (enemyPos.z > 0 && enemyPos.x > 0 && enemyPos.x < 1 && enemyPos.y > 0 && enemyPos.y < 1) ?true:false;
-
-                if (isOnScreen && !enemiesOnScreen.Contains(enemiesInGame[i]))
+                for (int i = 0; i < enemiesInGame.Count; i++)
                 {
+                    Vector3 enemyPos = Camera.main.WorldToViewportPoint(enemiesInGame[i].transform.position);
+
+                    bool isOnScreen = (enemyPos.z > 0 && enemyPos.x > 0 && enemyPos.x < 1 && enemyPos.y > 0 && enemyPos.y < 1) ? true : false;
+
+                    if (isOnScreen && !enemiesOnScreen.Contains(enemiesInGame[i]))
+                    {
                         enemiesOnScreen.Add(enemiesInGame[i]);
-                }
-                else if (enemiesOnScreen.Contains(enemiesInGame[i]) && !isOnScreen)
-                {
-                    locked = false;
-                    enemiesOnScreen.Remove(enemiesInGame[i]);
-                    //target = null;
-                    MissleCrossHair.SetActive(false);
-                    CrossHair.SetActive(true);
-                    gunMuzzles.SetActive(true);
-                    RocketLauncher.SetActive(false);
-                    RocketLauncherOff.Play();
-                    //playerScript.Break(false);
-                }
+                    }
+                    else if (enemiesOnScreen.Contains(enemiesInGame[i]) && !isOnScreen)
+                    {
+                        locked = false;
+                        enemiesOnScreen.Remove(enemiesInGame[i]);
+                        //target = null;
+                        MissleCrossHair.SetActive(false);
+                        CrossHair.SetActive(true);
+                        gunMuzzles.SetActive(true);
+                        RocketLauncher.SetActive(false);
+                        //RocketLauncherOff.Play();
+                        //playerScript.Break(false);
+                    }
                 }
             }
-            }
-            catch (System.IndexOutOfRangeException ex)  // CS0168
-                {
-                    Debug.Log("Index Error");
-                }
-            
-        
+        }
+        catch (System.IndexOutOfRangeException ex)  // CS0168
+        {
+            Debug.Log("Index Error");
+        }
+
+
         if (Input.GetKeyDown(KeyCode.Space) && !locked && enemiesOnScreen.Count > 0)
         {
             //SpawnEffect.SetActive(true);
@@ -122,7 +123,7 @@ public class LockOnSysteme : MonoBehaviour
             {
                 try
                 {
-                   i++;
+                    i++;
                 }
                 catch (System.IndexOutOfRangeException ex)  // CS0168
                 {
@@ -133,15 +134,15 @@ public class LockOnSysteme : MonoBehaviour
                     if (i >= enemiesOnScreen.Count)
                     {
                         i = 0;
-                    } 
+                    }
 
                 }
                 catch (System.IndexOutOfRangeException ex)
                 {
-                    
+
                     Debug.Log("Index Error");
                 }
-               
+
             }
         }
 
@@ -154,9 +155,9 @@ public class LockOnSysteme : MonoBehaviour
             }
             catch (System.IndexOutOfRangeException ex)  // CS0168
             {
-                    Debug.Log("Index Error");
+                Debug.Log("Index Error");
             }
-            
+
         }
         /*else
         {
@@ -171,16 +172,16 @@ public class LockOnSysteme : MonoBehaviour
     public void turnOffSystem()
     {
         if (locked)
-            {
-                locked = false;
-                target = null;
-                i = 0;
-                MissleCrossHair.SetActive(false);
-                CrossHair.SetActive(true);
-                gunMuzzles.SetActive(true);
-                RocketLauncher.SetActive(false);
-                RocketLauncherOff.Play();
-                //playerScript.Break(false);
-            }
+        {
+            locked = false;
+            target = null;
+            i = 0;
+            MissleCrossHair.SetActive(false);
+            CrossHair.SetActive(true);
+            gunMuzzles.SetActive(true);
+            RocketLauncher.SetActive(false);
+            RocketLauncherOff.Play();
+            //playerScript.Break(false);
+        }
     }
 }

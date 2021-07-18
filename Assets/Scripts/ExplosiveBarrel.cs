@@ -2,27 +2,31 @@
 
 public class ExplosiveBarrel : MonoBehaviour
 {
-    public GameObject Barrel, Explosion;
+    public GameObject Barrel, Explosion, source;
 
-    public AudioSource source;
+    //public AudioSource source;
 
     [SerializeField]
     private float range;
+
+    private bool isexploded = false;
 
     private void Awake()
     {
         Barrel.SetActive(true);
         Explosion.SetActive(false);
+        source.SetActive(false);
 
-        source = GetComponent<AudioSource>();
     }
 
     public void Explode()
     {
-
-        source.Play();
+        source.SetActive(true);
+        source.GetComponent<AudioSource>().Play();
+        Debug.Log(isexploded);
         Barrel.SetActive(false);
         Explosion.SetActive(true);
+
 
         Collider[] objects = Physics.OverlapSphere(transform.position, range);
 
@@ -60,17 +64,19 @@ public class ExplosiveBarrel : MonoBehaviour
             Explode();
         }
     }
-    */
-    private void Update()
+    
+    void Update()
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Explode();
-        }
-        */
-    }
 
+        if (isexploded)
+        {
+            Debug.Log("here---------------------");
+            //source.Play();
+            isexploded = false;
+        }
+
+    }
+    */
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, range);
