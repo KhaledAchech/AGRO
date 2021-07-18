@@ -26,7 +26,13 @@ public class TurretV2Behaviour : MonoBehaviour
     //to add a force effect
     public float launchVelocity = 700f;
 
+    //Opening/closing animation
+    private Animation anim;
 
+    //SFX
+    private AudioSource OpenDoor, CloseDoor;
+
+    public AudioSource[] sounds;
 
 
     // Start is called before the first frame update
@@ -35,6 +41,11 @@ public class TurretV2Behaviour : MonoBehaviour
         // Set the firing range distance
         this.GetComponent<SphereCollider>().radius = firingRange;
 
+        anim = gameObject.GetComponent<Animation>();
+
+        sounds = GetComponents<AudioSource>();
+        OpenDoor = sounds[0];
+        CloseDoor = sounds[1];
     }
 
     // Update is called once per frame
@@ -56,6 +67,9 @@ public class TurretV2Behaviour : MonoBehaviour
         {
             target = other.transform;
             canFire = true;
+            anim["Turret_v1_activation"].speed = 0.8f;
+            OpenDoor.Play();
+            anim.Play("Turret_v1_activation");
         }
 
     }
@@ -65,6 +79,8 @@ public class TurretV2Behaviour : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             canFire = false;
+            CloseDoor.Play();
+            anim.Play("Turret_v1_deactivation");
         }
     }
     void AimAndFire()
@@ -88,10 +104,6 @@ public class TurretV2Behaviour : MonoBehaviour
 
             /*laserShot.GetComponent<Rigidbody>().AddRelativeForce(new Vector3
                                                 (0, launchVelocity, 0));*/
-        }
-        else
-        {
-
         }
     }
 }

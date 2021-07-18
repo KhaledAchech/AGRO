@@ -9,9 +9,6 @@ public class Enemy : MonoBehaviour
     {
         turret.SetActive(true);
         Explosion.SetActive(false);
-
-        source = GetComponent<AudioSource>();
-
         this.enabled = false;
 
     }
@@ -22,6 +19,5 @@ public class Enemy : MonoBehaviour
         turret.SetActive(false);
         Explosion.SetActive(true);
         ScoringSystem.Score += 100;
-        source.Play();
     }
 }
