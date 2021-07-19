@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7300756885168717856}
   m_LocalRotation: {x: -0, y: -0.73418736, z: -0, w: 0.678947}
-  m_LocalPosition: {x: -0, y: 0, z: 0.06}
+  m_LocalPosition: {x: 0.101, y: 0, z: 0.068}
   m_LocalScale: {x: 0.5, y: 0.4, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -89,7 +89,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7300756885168717856}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -106,4 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d994cc7b28d9746bac11896833a34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionExplosion: {fileID: 100002, guid: 00fedc70b62a31e448e8ccc298257b56, type: 3}
   speed: 200
+  damage: 5

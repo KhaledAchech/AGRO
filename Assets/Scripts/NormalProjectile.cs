@@ -2,26 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalProjectile : BaseProjectile
+public class NormalProjectile : MonoBehaviour
 {
 
-    Vector3 m_direction;
-    bool m_fired;
+    public GameObject collisionExplosion;
+    public float speed = 100f;
+    public float damage = 5f;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (m_fired)
+        transform.position += transform.forward * Time.deltaTime * speed;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
         {
-            transform.position += m_direction * (speed*Time.deltaTime);
+            explode();
         }
     }
 
-    public override void FireProjectile(GameObject launcher, GameObject target, int damage)
+
+
+    public void explode()
     {
-        if (launcher && target)
+        if (collisionExplosion != null)
         {
-            m_direction = (target.transform.position - launcher.transform.position).normalized;
-            m_fired = true;
+            GameObject explosion = (GameObject)Instantiate(
+                collisionExplosion, transform.position, transform.rotation);
+            PlayerAttributs playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttributs>();
+            //Debug.Log("am here");
+            playerHealth.DeductHealth(damage);
+            Destroy(gameObject);
+            Destroy(explosion, 1f);
         }
     }
 }

@@ -12,9 +12,17 @@ public class GatlingGun : MonoBehaviour
     public Transform go_GunBody;
     public Transform go_barrel;
 
+    //Projectile && Spawn Point
+    public GameObject spawnPoint;
+    public GameObject projectile;
+    public float fireRate;
+
+
     // Gun barrel rotation
     public float barrelRotationSpeed;
     float currentRotationSpeed;
+
+    float m_fireTimer = 0.0f;
 
     // Distance the turret can aim and fire from
     public float firingRange;
@@ -24,12 +32,15 @@ public class GatlingGun : MonoBehaviour
 
     // Used to start and stop the turret firing
     bool canFire = false;
+    private AudioSource gunNoise;
 
 
     void Start()
     {
         // Set the firing range distance
         this.GetComponent<SphereCollider>().radius = firingRange;
+
+        gunNoise = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -81,10 +92,19 @@ public class GatlingGun : MonoBehaviour
             go_baseRotation.transform.LookAt(baseTargetPostition);
             go_GunBody.transform.LookAt(gunBodyTargetPostition);
 
+            m_fireTimer += Time.deltaTime;
+            if (m_fireTimer >= fireRate)
+            {
+                GameObject gunBullet = Instantiate(projectile, spawnPoint.transform.position,
+                                                    spawnPoint.transform.rotation);
+                m_fireTimer = 0.0f;
+            }
+
             // start particle system 
             if (!muzzelFlash.isPlaying)
             {
                 muzzelFlash.Play();
+                gunNoise.Play();
             }
         }
         else
@@ -96,6 +116,7 @@ public class GatlingGun : MonoBehaviour
             if (muzzelFlash.isPlaying)
             {
                 muzzelFlash.Stop();
+                gunNoise.Stop();
             }
         }
     }
