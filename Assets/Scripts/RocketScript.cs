@@ -8,7 +8,7 @@ public class RocketScript : MonoBehaviour
     public GameObject lockOnSystemeScript;
     //public Rigidbody RocketRgb;
     public GameObject m_shotPrefab;
-   
+
 
     Vector3 rocketTarget;
 
@@ -17,12 +17,12 @@ public class RocketScript : MonoBehaviour
     void Start()
     {
         RocketLaunch = GetComponent<AudioSource>();
-        
+
     }
 
     // Update is called once per frame
     void Update()
-    {   
+    {
         LockOnSysteme lockOnSystem = lockOnSystemeScript.GetComponent<LockOnSysteme>();
         rocketTarget = lockOnSystem.target.position;
         if (Input.GetMouseButtonDown(0))
@@ -37,7 +37,6 @@ public class RocketScript : MonoBehaviour
     {
         GameObject rocket = GameObject.Instantiate(m_shotPrefab, transform.position, transform.rotation) as GameObject;
         rocket.GetComponent<RocketBehavior>().setTarget(rocketTarget);
-        Debug.Log("Rocket Hit");
     }
     /*private void OnCollisionEnter(Collision collision)
     {
@@ -63,5 +62,5 @@ public class RocketScript : MonoBehaviour
             
         }
     }*/
-    
+
 }

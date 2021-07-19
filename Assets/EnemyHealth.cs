@@ -11,7 +11,7 @@ public class EnemyHealth : MonoBehaviour
 
     public UIBarScript EnemyHpBar;
     public HealthBar HpBar;
-    
+
     float enemyHealth;
 
     public bool enemyIsDead;
@@ -31,7 +31,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (enemyIsDead)
         {
-           
+
             explode();
         }
     }
@@ -41,31 +41,29 @@ public class EnemyHealth : MonoBehaviour
         enemyHealth = enemyHealth - deductHealth;
 
         int HP = (int)enemyHealth;
-		int MaxHP = (int)enemyMaxHealth;
-        
-        EnemyHpBar.UpdateValue(HP,MaxHP);
+        int MaxHP = (int)enemyMaxHealth;
+
+        EnemyHpBar.UpdateValue(HP, MaxHP);
         HpBar.setHealth(HP);
         //Debug.Log(enemyHealth);
-        if (enemyHealth <= 0) 
-        { 
+        if (enemyHealth <= 0)
+        {
             enemyIsDead = true;
             GameObject enemyExplosion = (GameObject)Instantiate(
                 EnemyExplosion, transform.position, transform.rotation);
             EnemyDead();
         }
     }
-    void OnTriggerEnter(Collider other) 
+    void OnTriggerEnter(Collider other)
     {
-        Debug.Log("am here on trigger EnemyScript");
         if (other.tag == "Rocket")
-        {   
-            Debug.Log("am here on trigger EnemyScript");
+        {
             DeductHealth(hitWithRocket);
             explode();
         }
     }
 
-    
+
     void EnemyDead()
     {
         enemyIsDead = true;
@@ -73,17 +71,18 @@ public class EnemyHealth : MonoBehaviour
     }
     void explode()
     {
-        if (collisionExplosion  != null) {
+        if (collisionExplosion != null)
+        {
             GameObject explosion = (GameObject)Instantiate(
                 collisionExplosion, transform.position, transform.rotation);
             LockOnSysteme.enemiesInGame.Remove(gameObject);
-            if (LockOnSysteme.enemiesOnScreen.Contains(gameObject)) { LockOnSysteme.enemiesOnScreen.Remove(gameObject);}
+            if (LockOnSysteme.enemiesOnScreen.Contains(gameObject)) { LockOnSysteme.enemiesOnScreen.Remove(gameObject); }
             LockOnSysteme.i = 0;
             LockOnSysteme lockoff = lockSystem.GetComponent<LockOnSysteme>();
             lockoff.turnOffSystem();
             ScoringSystem.Score += 50;
             Destroy(gameObject);
-            CinemachineShake.Instance.ShakeCamera(1.5f,0.01f);
+            CinemachineShake.Instance.ShakeCamera(1.5f, 0.01f);
             Destroy(explosion, 1f);
         }
 

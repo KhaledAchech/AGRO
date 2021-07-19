@@ -29,12 +29,12 @@ public class RayGun : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButton(0))
-        { 
+        {
 
             if (Time.time > m_shootRateTimeStamp)
             {
                 shootRay();
-                if(!LaserShot.isPlaying) LaserShot.Play();
+                if (!LaserShot.isPlaying) LaserShot.Play();
                 m_shootRateTimeStamp = Time.time + shootRate;
             }
         }
@@ -51,25 +51,26 @@ public class RayGun : MonoBehaviour
             GameObject.Destroy(laser, 2f);
             if (hit.transform.tag == "Enemy")
             {
-            LaserImpact.Play();
-            CinemachineShake.Instance.ShakeCamera(0.8f,0.1f);
-            EnemyHealth enemyHealthScript = hit.transform.GetComponent<EnemyHealth>();
-            enemyHealthScript.DeductHealth(HitWithLaser);
+                LaserImpact.Play();
+                CinemachineShake.Instance.ShakeCamera(0.8f, 0.1f);
+                EnemyHealth enemyHealthScript = hit.transform.GetComponent<EnemyHealth>();
+                if (enemyHealthScript)
+                    enemyHealthScript.DeductHealth(HitWithLaser);
             }
             else
             {
-                CinemachineShake.Instance.ShakeCamera(0.5f,0.1f);
+                CinemachineShake.Instance.ShakeCamera(0.5f, 0.1f);
                 LaserImpactonWall.Play();
             }
-            
+
             if (hit.transform.tag == "ExplosiveBarrel")
             {
-            LaserImpact.Play();
-            CinemachineShake.Instance.ShakeCamera(0.4f,0.1f);
-            ExplosiveBarrel explosiveBarrel = hit.transform.GetComponent<ExplosiveBarrel>();
-            explosiveBarrel.Explode();
+                LaserImpact.Play();
+                CinemachineShake.Instance.ShakeCamera(0.4f, 0.1f);
+                ExplosiveBarrel explosiveBarrel = hit.transform.GetComponent<ExplosiveBarrel>();
+                explosiveBarrel.Explode();
             }
-            
+
 
 
         }

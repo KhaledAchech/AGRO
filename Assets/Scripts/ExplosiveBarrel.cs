@@ -23,7 +23,6 @@ public class ExplosiveBarrel : MonoBehaviour
     {
         source.SetActive(true);
         source.GetComponent<AudioSource>().Play();
-        Debug.Log(isexploded);
         Barrel.SetActive(false);
         Explosion.SetActive(true);
 
@@ -37,14 +36,11 @@ public class ExplosiveBarrel : MonoBehaviour
             {
                 if (obj.GetComponent<Enemy>() != null)
                 {
-
-                    Debug.Log("we have enemies !");
                     obj.GetComponent<Enemy>().KillEnemy(transform.position);
 
                 }
                 if (obj.GetComponent<ExplosiveBarrel>() != null)
                 {
-                    Debug.Log("we have Barrels !");
                     obj.GetComponent<ExplosiveBarrel>().Explode();
 
                 }

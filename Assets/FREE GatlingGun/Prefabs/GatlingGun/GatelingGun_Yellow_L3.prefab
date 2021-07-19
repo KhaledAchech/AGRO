@@ -20484,7 +20484,7 @@ MonoBehaviour:
     type: 3}
   fireRate: 0.2
   barrelRotationSpeed: 1000
-  firingRange: 100
+  firingRange: 50
   muzzelFlash: {fileID: 198562569527715984}
 --- !u!114 &90912077
 MonoBehaviour:

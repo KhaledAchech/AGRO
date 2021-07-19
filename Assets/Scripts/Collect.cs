@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Collect : MonoBehaviour
 {
-   public GameObject collectSound;
+    public GameObject collectSound;
 
 
-   void OnTriggerEnter(Collider other)
-   {
-        GameObject sound = (GameObject)Instantiate( 
+    void OnTriggerEnter(Collider other)
+    {
+        GameObject sound = (GameObject)Instantiate(
                 collectSound, transform.position, transform.rotation);
-       Debug.Log("score !");
-       ScoringSystem.Score += 30;
-       Destroy(gameObject);
-   }
+        ScoringSystem.Score += 30;
+        Destroy(gameObject);
+    }
 }
